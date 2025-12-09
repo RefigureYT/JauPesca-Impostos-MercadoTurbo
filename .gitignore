@@ -137,3 +137,14 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# DEV
+.dirignore
+gerar_mapa_diretorio.py
+mapa_conteudo.ini
+mapa_diretorio.ini
+mapa_visual.txt
+test.js
+
+# Credentials
+src/credentials/cred.json

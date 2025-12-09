@@ -1,0 +1,1 @@
+export { credentials } from "../config/config.js";

@@ -1,0 +1,28 @@
+{
+  "name": "jaupesca-impostos-mercadoturbo",
+  "version": "1.0.0",
+  "description": "Serviço em Node.js para sincronizar impostos de produtos com o Mercado Turbo, lendo os dados de uma fonte interna (Tiny ERP ou banco PostgreSQL) e aplicando as regras definidas em planilhas do Google Sheets.",
+  "main": "test.js",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RefigureYT/JauPesca-Impostos-MercadoTurbo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/RefigureYT/JauPesca-Impostos-MercadoTurbo/issues"
+  },
+  "homepage": "https://github.com/RefigureYT/JauPesca-Impostos-MercadoTurbo#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "googleapis": "^166.0.0",
+    "pg": "^8.16.3"
+  }
+}
