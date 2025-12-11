@@ -1,10 +1,9 @@
-import { access, readFile, writeFile } from "fs/promises";
+import { access, readFile } from "fs/promises";
 import { fileURLToPath } from "url";
 import { configDotenv } from "dotenv";
 import path from "path";
 configDotenv();
 
-const __filename = fileURLToPath(import.meta.url);
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 // ============= HELPERS =============
@@ -98,8 +97,6 @@ for (const company of companies) {
     const dateRangeDays = parseInt(process.env[`${company}_DATE_RANGE_DAYS`]) || parseInt(process.env.DATE_RANGE_DAYS);
     const queryTokenMl = process.env[`${company}_TOKEN_QUERY_ML`] || '';
     const queryTokenMt = process.env[`${company}_TOKEN_QUERY_MT`] || '';
-
-    const variablesRequired = [name, idSheet, range, dateRangeDays, queryTokenMl, queryTokenMt];
 
     // Map pra saber exatamente qual faltou
     const requiredMap = {

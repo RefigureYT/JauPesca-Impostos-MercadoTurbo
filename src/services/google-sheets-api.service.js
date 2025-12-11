@@ -26,7 +26,5 @@ export async function readSheetData(idSheet, range) {
         console.log('No data found.');
         return [];
     }
-
-    console.log('Data from sheet:');
     return rows;
 }

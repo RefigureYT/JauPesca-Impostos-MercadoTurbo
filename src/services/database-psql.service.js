@@ -382,3 +382,37 @@ export async function searchProducts({ filters = {}, limit = 50, offset = 0 } = 
     const rows = await executarQueryInDb(sql, values, poolName);
     return rows;
 }
+
+// Busca TODOS os produtos, paginando em blocos de até 1000
+export async function getAllProducts({ filters = {} } = {}, poolName) {
+    const pageSize = 1000; // respeita o limite interno do searchProducts
+    const allRows = [];
+    let offset = 0;
+
+    while (true) {
+        const page = await searchProducts(
+            { filters, limit: pageSize, offset },
+            poolName
+        );
+
+        allRows.push(...page);
+
+        // Se voltou menos do que pageSize, acabou
+        if (page.length < pageSize) {
+            break;
+        }
+
+        offset += pageSize;
+    }
+
+    // 🔎 Aqui filtramos para pegar apenas produtos que NÃO sejam "produto pai"
+    // Regra:
+    // - Se tipo_do_produto estiver "S" ou "K" => é SIMPLES ou KIT / pode ter pai => MANTÉM
+    // - Se tipo_do_produto estiver "V" => consideramos produto pai => REMOVE
+    const productsWithoutParent = allRows.filter(prod => {
+        const parentCode = (prod.tipo_do_produto ?? '').toString().trim();
+        return parentCode !== 'V';
+    });
+
+    return productsWithoutParent;
+}

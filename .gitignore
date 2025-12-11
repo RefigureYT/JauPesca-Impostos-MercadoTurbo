@@ -145,6 +145,7 @@ mapa_conteudo.ini
 mapa_diretorio.ini
 mapa_visual.txt
 test.js
+.vscode/
 
 # Credentials
 src/credentials/cred.json
